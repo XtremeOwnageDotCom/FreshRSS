@@ -50,11 +50,10 @@ Allow the release namespace to be overridden for multi-namespace deployments in 
 Common labels
 */}}
 {{- define "freshrss.labels" -}}
-app.kubernetes.io/name: {{ template "freshrss.name" . }}
-helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ template "freshrss.name" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | default "" }}
+helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 {{- with .Values.extraLabels }}
 {{ toYaml . }}
 {{- end }}
