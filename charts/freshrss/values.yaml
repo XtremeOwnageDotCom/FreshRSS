@@ -24,7 +24,7 @@ oidc:
 # Ingress configuration
 ingress:
   enabled: true                         # Enable or disable Ingress
-  host: "freshrss.yourdomain.com"   # Host for Ingress.
+  host: "freshrsstest.kube.xtremeownage.com"   # Host for Ingress.
   path: "/"                             # Path for Ingress
 
 # Persistence configuration for storage
