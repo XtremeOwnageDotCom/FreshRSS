@@ -37,5 +37,15 @@ persistence:
   accessMode: ReadWriteOnce             # Access mode for storage
   size: "5Gi"                           # Size of the persistent volume
 
+# Kubernetes Service Configuration
+service:
+  enabled: true
+  type: ClusterIP
+  port: 80
+  ## Service annotations. Can be templated.
+  annotations: {}
+  labels: {}
+  portName: service
+
 # Extra labels which will be applied to all created resources.
 extraLabels: {}
