@@ -14,15 +14,17 @@ spec:
   serviceName: freshrss
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ template "name" . }}
-      app.kubernetes.io/instance: {{ include "freshrss.fullname" . }}
-      app.kubernetes.io/component: app
+      {{- include "freshrss.labels" . | nindent 6 }}
+      {{- with .Values.ingress.labels }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ template "name" . }}
-        app.kubernetes.io/instance: {{ include "freshrss.fullname" . }}
-        app.kubernetes.io/component: app
+        {{- include "freshrss.labels" . | nindent 8 }}
+        {{- with .Values.ingress.labels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
     spec:
       volumes:
         - name: data

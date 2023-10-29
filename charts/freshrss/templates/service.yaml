@@ -64,9 +64,10 @@ spec:
   externalTrafficPolicy: {{ . }}
   {{- end }}
   selector:
-    app.kubernetes.io/name: {{ template "name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/component: app
+    {{- include "freshrss.labels" . | nindent 4 }}
+    {{- with .Values.ingress.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
   ports:
     - name: {{ .Values.service.portName }}
       port: {{ .Values.service.port }}
