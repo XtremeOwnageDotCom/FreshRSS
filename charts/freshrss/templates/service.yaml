@@ -63,6 +63,10 @@ spec:
   {{- with .Values.service.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
+  selector:
+    app.kubernetes.io/name: {{ template "name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: app
   ports:
     - name: {{ .Values.service.portName }}
       port: {{ .Values.service.port }}
