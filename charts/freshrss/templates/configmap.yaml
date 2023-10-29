@@ -5,9 +5,6 @@ metadata:
   namespace: {{ include "freshrss.namespace" . }}
   labels:
     {{- include "freshrss.labels" . | nindent 4 }}
-    {{- with .Values.ingress.labels }}
-    {{- toYaml . | nindent 4 }}
-    {{- end }}
 data:
   {{- if .Values.oidc.enabled -}}
   OIDC_ENABLED: "1"

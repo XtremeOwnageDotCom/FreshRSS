@@ -6,9 +6,6 @@ metadata:
   namespace: {{ include "freshrss.namespace" . }}
   labels:
     {{- include "freshrss.labels" . | nindent 4 }}
-    {{- with .Values.ingress.labels }}
-    {{- toYaml . | nindent 4 }}
-    {{- end }}
 spec:
 {{- if .Values.persistence.storageClass }}
 {{- if (eq "-" .Values.persistence.storageClass) }}
