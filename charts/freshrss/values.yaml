@@ -21,11 +21,13 @@ oidc:
   secrets:
     clientSecret: ""                    # OIDC Secret. (This comes from your SSO/OIDC Provider)
     clientCryptoKey: ""                 # Put a random value here?
+
 # Ingress configuration
 ingress:
   enabled: true                         # Enable or disable Ingress
   host: "freshrsstest.kube.xtremeownage.com"   # Host for Ingress.
   path: "/"                             # Path for Ingress
+  annotations: {}
 
 # Persistence configuration for storage
 persistence:
@@ -34,3 +36,6 @@ persistence:
   # storageClassName: "-"               # Storage class name (uncomment to specify)
   accessMode: ReadWriteOnce             # Access mode for storage
   size: "5Gi"                           # Size of the persistent volume
+
+# Extra labels which will be applied to all created resources.
+extraLabels: {}

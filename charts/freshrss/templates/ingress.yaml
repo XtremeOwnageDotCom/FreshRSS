@@ -4,11 +4,16 @@ metadata:
   name: {{ .Release.Name }}-ingress
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ template "name" . }}
-    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion | default "" }}
+    {{- include "freshrss.labels" . | nindent 4 }}
+    {{- with .Values.ingress.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- range $key, $value := . }}
+    {{ $key }}: {{ tpl $value $ | quote }}
+    {{- end }}
+  {{- end }}
 spec:
   rules:
     - host: {{ .Values.ingress.host  | quote }}
