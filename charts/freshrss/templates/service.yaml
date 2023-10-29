@@ -64,10 +64,7 @@ spec:
   externalTrafficPolicy: {{ . }}
   {{- end }}
   selector:
-    {{- include "freshrss.labels" . | nindent 4 }}
-    {{- with .Values.ingress.labels }}
-    {{- toYaml . | nindent 4 }}
-    {{- end }}
+    {{- include "freshrss.selectorLabels" . | nindent 4 }}
   ports:
     - name: {{ .Values.service.portName }}
       port: {{ .Values.service.port }}
