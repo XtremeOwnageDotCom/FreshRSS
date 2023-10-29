@@ -20,7 +20,7 @@ oidc:
   xForwardedHeaders: "X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto" # Headers for OIDC
   secrets:
     clientSecret: ""                    # OIDC Secret. (This comes from your SSO/OIDC Provider)
-    clientCryptoKey: ""                 # Put a random value here?
+    clientCryptoKey: ""                 # Random value will be automatically generated, if not provided.
 
 # Ingress configuration
 ingress:
