@@ -67,3 +67,17 @@ Selector labels
 app.kubernetes.io/name: {{ include "freshrss.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+
+{{/*
+Looks if there's an existing secret and reuse its password. If not it generates
+new password and use it.
+*/}}
+{{- define "freshrss.cryptokey" -}}
+{{- $secret := (lookup "v1" "Secret" (include "freshrss.namespace" .) (include "freshrss.fullname" .) ) }}
+{{- if $secret }}
+{{- index $secret "data" "OIDC_CLIENT_CRYPTO_KEY" }}
+{{- else }}
+{{- (randAlphaNum 40) | b64enc | quote }}
+{{- end }}
+{{- end }}

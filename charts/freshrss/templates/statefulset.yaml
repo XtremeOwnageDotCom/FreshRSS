@@ -29,10 +29,10 @@ spec:
           image: freshrss/freshrss:{{ .Values.image.tag }}
           envFrom:
             - configMapRef:
-                name: {{ include "freshrss.fullname" . }}-config
+                name: {{ include "freshrss.fullname" . }}
                 optional: true
             - secretRef:
-                name: {{ include "freshrss.fullname" . }}-secrets
+                name: {{ include "freshrss.fullname" . }}
                 optional: true
           volumeMounts:
             # Add other volume mounts / subpaths as needed.
