@@ -14,17 +14,11 @@ spec:
   serviceName: freshrss
   selector:
     matchLabels:
-      {{- include "freshrss.labels" . | nindent 6 }}
-      {{- with .Values.ingress.labels }}
-      {{- toYaml . | nindent 6 }}
-      {{- end }}
+        {{- include "freshrss.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "freshrss.labels" . | nindent 8 }}
-        {{- with .Values.ingress.labels }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{- include "freshrss.selectorLabels" . | nindent 8 }}
     spec:
       volumes:
         - name: data
