@@ -80,6 +80,9 @@ httpRoute:
 
 persistence:
   enabled: true
+  type: "pvc"
+  # type: hostPath
+  #   hostPath: /path/to/config
   # storageClass: "-"
   accessMode: ReadWriteOnce
   size: "5Gi"
