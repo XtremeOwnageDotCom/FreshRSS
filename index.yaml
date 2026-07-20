@@ -1,0 +1,40 @@
+apiVersion: v1
+entries:
+  freshrss:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial Helm chart for FreshRSS
+      artifacthub.io/images: |
+        - name: freshrss
+          image: freshrss/freshrss:latest
+      artifacthub.io/license: AGPL-3.0-or-later
+      artifacthub.io/links: |
+        - name: source
+          url: https://github.com/FreshRSS/FreshRSS
+        - name: documentation
+          url: https://freshrss.github.io/FreshRSS/
+    apiVersion: v2
+    appVersion: latest
+    created: "2026-07-20T14:19:33.983718267Z"
+    description: A Helm chart for FreshRSS
+    digest: 432339ec4bc3a06d104ba733d54158c21916fc0d0c8521ab0daaa3509e9c225c
+    home: https://freshrss.org
+    icon: https://freshrss.org/img/freshrss-logo.svg
+    keywords:
+    - freshrss
+    - rss
+    - feed-reader
+    maintainers:
+    - name: Alkarex
+      url: https://github.com/Alkarex
+    - name: XtremeOwnageDotCom
+      url: https://github.com/XtremeOwnageDotCom
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    type: application
+    urls:
+    - https://github.com/XtremeOwnageDotCom/FreshRSS/releases/download/freshrss-0.1.0/freshrss-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-07-20T14:19:33.983724807Z"
