@@ -48,10 +48,16 @@ spec:
       volumes:
         - name: data
         {{- if .Values.persistence.enabled }}
+          {{- if eq .Values.persistence.type "pvc" }}
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (printf "%s-data" (include "freshrss.fullname" .)) }}
-        {{- else }}
+          {{- else if eq .Values.persistence.type "hostPath" }}
+          hostPath:
+            path: {{ .Values.persistence.hostPath }}
+            type: Directory
+          {{- else }}
           emptyDir: {}
+          {{- end }}
         {{- end }}
       containers:
         - name: freshrss
